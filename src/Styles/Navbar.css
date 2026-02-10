@@ -1,0 +1,558 @@
+/* Navbar.css - Luxury Premium Design */
+
+/* ===== VARIABLES ===== */
+:root {
+  --primary-gold: #D4AF37;
+  --secondary-gold: #FFD700;
+  --dark-charcoal: #121212;
+  --medium-charcoal: #1E1E1E;
+  --light-charcoal: #2D2D2D;
+  --off-white: #F5F5F5;
+  --platinum: #E5E4E2;
+  --gradient-gold: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ===== BRAND CONTAINER WITH LARGE ICON ===== */
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Increased gap for larger icon */
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+/* LARGE SHOE ICON */
+.brand-logo-icon {
+  width: 60px; /* Increased from 40px */
+  height: 60px; /* Increased from 40px */
+  object-fit: contain;
+  filter: 
+    drop-shadow(0 5px 15px rgba(212, 175, 55, 0.3))
+    drop-shadow(0 0 0 3px rgba(212, 175, 55, 0.1)); /* Added glow effect */
+  transition: var(--transition-smooth);
+  animation: iconFloat 4s infinite ease-in-out;
+  position: relative;
+}
+
+/* Gold border/glow effect around icon */
+.brand-logo-icon::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: var(--gradient-gold);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.3;
+  filter: blur(10px);
+  transition: opacity 0.6s ease;
+}
+
+.brand-container:hover .brand-logo-icon::before {
+  opacity: 0.5;
+}
+
+.brand-container:hover .brand-logo-icon {
+  transform: rotate(15deg) scale(1.15); /* Increased scale */
+  filter: 
+    drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5))
+    drop-shadow(0 0 0 5px rgba(212, 175, 55, 0.2)); /* Enhanced glow */
+  animation-play-state: paused; /* Pause animation on hover */
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg); /* Increased movement */
+  }
+}
+
+/* Update existing navbar h2 styles to match larger icon */
+.navbar .brand-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem; /* Increased from 1.8rem */
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: var(--off-white);
+  position: relative;
+  transition: var(--transition-smooth);
+  margin: 0;
+}
+
+.navbar .brand-container h2::before {
+  content: 'STEPPERIENCE';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.navbar .brand-container:hover h2::before {
+  opacity: 1;
+}
+
+.navbar .brand-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px; /* Slightly thicker line */
+  background: var(--gradient-gold);
+  transition: width 0.6s ease;
+}
+
+.navbar .brand-container:hover h2::after {
+  width: 100%;
+}
+
+/* Responsive adjustments for brand with LARGER icon */
+@media (max-width: 1024px) {
+  .brand-container {
+    gap: 18px;
+  }
+  
+  .brand-logo-icon {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .navbar .brand-container h2 {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-container {
+    gap: 15px;
+  }
+  
+  .brand-logo-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .navbar .brand-container h2 {
+    font-size: 1.7rem;
+    letter-spacing: 2.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-container {
+    gap: 12px;
+  }
+  
+  .brand-logo-icon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .navbar .brand-container h2 {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-container {
+    gap: 10px;
+  }
+  
+  .brand-logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .navbar .brand-container h2 {
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* ===== NAVBAR BASE ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  z-index: 1000;
+  transition: var(--transition-smooth);
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.03) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.navbar:hover::before {
+  opacity: 1;
+}
+
+.navbar.scrolled {
+  height: 70px;
+  background: rgba(18, 18, 18, 0.98);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== BRAND LOGO ===== */
+.navbar h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: var(--off-white);
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.navbar h2::before {
+  content: 'STEPPERIENCE';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.navbar h2:hover::before {
+  opacity: 1;
+}
+
+.navbar h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gradient-gold);
+  transition: width 0.6s ease;
+}
+
+.navbar h2:hover::after {
+  width: 100%;
+}
+
+/* ===== NAVIGATION LINKS ===== */
+.nav-links {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+}
+
+.nav-links::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 0;
+  background: var(--gradient-gold);
+  transition: height 0.6s ease;
+}
+
+.navbar:hover .nav-links::before {
+  height: 30px;
+}
+
+.nav-links a {
+  color: var(--platinum);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  padding: 10px 0;
+  transition: var(--transition-smooth);
+  opacity: 0.8;
+}
+
+.nav-links a:hover {
+  color: var(--off-white);
+  opacity: 1;
+}
+
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gradient-gold);
+  transition: width 0.4s ease;
+}
+
+.nav-links a:hover::before {
+  width: 100%;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--primary-gold);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.nav-links a:hover::after {
+  opacity: 1;
+  animation: dotPulse 2s infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { 
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-50%) scale(1.5);
+    opacity: 0.7;
+  }
+}
+
+/* ===== ACTIVE LINK STYLING ===== */
+.nav-links a.active {
+  color: var(--primary-gold);
+  opacity: 1;
+}
+
+.nav-links a.active::before {
+  width: 100%;
+}
+
+.nav-links a.active::after {
+  opacity: 1;
+  animation: dotPulse 2s infinite;
+}
+
+/* ===== MOBILE MENU TOGGLE ===== */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--off-white);
+  transition: var(--transition-smooth);
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 30px;
+  }
+  
+  .nav-links {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+    height: 70px;
+  }
+  
+  .navbar h2 {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: rgba(18, 18, 18, 0.98);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 60px;
+    gap: 40px;
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 1px solid var(--glass-border);
+  }
+  
+  .nav-links.active {
+    transform: translateX(0);
+  }
+  
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 15px 0;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideIn 0.6s ease forwards;
+  }
+  
+  .nav-links.active a {
+    animation-delay: calc(var(--link-index) * 0.1s);
+  }
+  
+  .nav-links a::after {
+    left: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 15px;
+  }
+  
+  .navbar h2 {
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== SCROLL EFFECT ===== */
+.navbar.scrolled .nav-links a {
+  font-size: 0.9rem;
+}
+
+.navbar.scrolled h2 {
+  font-size: 1.6rem;
+}
+
+/* ===== FLOATING NAV INDICATOR ===== */
+.nav-indicator {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 999;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--glass-border);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.indicator-dot.active {
+  background: var(--gradient-gold);
+  transform: scale(1.3);
+}
+
+.indicator-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--primary-gold);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.indicator-dot:hover::before {
+  opacity: 0.3;
+}
