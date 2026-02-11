@@ -60,7 +60,7 @@ function Footer() {
                                     <FaGithub />
                                 </a>
                                 <a 
-                                    href="https://www.instagram.com/appas_005/" 
+                                    href="https://www.instagram.com/mr_appass/" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     className="social-link"
