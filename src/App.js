@@ -15,7 +15,6 @@ function App() {
       <BrowserRouter>
         <div className="app-container">
           <Navbar />
-          <AddToCart />
           
           <main className="main-content">
             <Routes>
@@ -26,6 +25,9 @@ function App() {
           </main>
           
           <Footer />
+          
+          {/* AddToCart should be here - outside main content, after footer */}
+          <AddToCart />
         </div>
       </BrowserRouter>
     </CartProvider>
